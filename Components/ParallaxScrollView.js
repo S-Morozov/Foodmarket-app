@@ -6,7 +6,7 @@ import { bool, func, number, string } from 'prop-types';
 
 const window = Dimensions.get('window');
 
-const SCROLLVIEW_REF = 'ScrollView';
+const scrollViewRef = React.createRef();
 
 const pivotPoint = (a, b) => a - b;
 
@@ -123,7 +123,7 @@ class ParallaxScrollView extends Component {
         {React.cloneElement(
           scrollElement,
           {
-            ref: SCROLLVIEW_REF,
+            ref: scrollViewRef,
             style: [styles.scrollView, scrollElement.props.style],
             scrollEventThrottle: 1,
             // Using Native Driver greatly optimizes performance

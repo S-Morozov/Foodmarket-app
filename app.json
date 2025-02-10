@@ -16,10 +16,12 @@
       "**/*"
     ],
     "ios": {
+      "newArchEnabled": true,
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
+        "newArchEnabled": true,
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
