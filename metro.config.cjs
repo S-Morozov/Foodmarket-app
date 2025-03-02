@@ -9,6 +9,7 @@ config.resolver = {
   alias: {
     '@': __dirname, // Update to point to your src or main directory
   },
+  sourceExts: [...config.resolver.sourceExts, 'cjs', 'mjs'],
 };
 
 module.exports = config;
