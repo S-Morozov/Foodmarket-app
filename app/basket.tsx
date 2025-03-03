@@ -20,12 +20,21 @@ const Basket = () => {
     delivery: 5.99,
   };
 
+  // Function to recalculate total with fees only if products exist
+  const getFinalTotal = () => {
+    // Apply fees only if products are in the cart
+    if (products.length > 0) {
+      return total + FEES.service + FEES.delivery;
+    }
+    return total;  // Return only total without fees if cart is empty
+  };
+
   const startCheckout = () => {
     setOrder(true);
     clearCart();
   };
 
-  // Shine animation (previous code remains unchanged)
+  // Shine animation
   const shineAnimation = useSharedValue(-1);
   useEffect(() => {
     shineAnimation.value = withRepeat(
@@ -54,6 +63,11 @@ const Basket = () => {
     transform: [{ scale: pulseAnimation.value }],
   }));
 
+  useEffect(() => {
+    // Ensure that the fees are recalculated when the products change
+    // This will trigger a re-render with updated totals
+  }, [products]);
+
   return (
     <>
       {order && <ConfettiCannon count={200} origin={{ x: -10, y: 0 }} fallSpeed={2500} fadeOut={true} autoStart={true} />}
@@ -77,7 +91,7 @@ const Basket = () => {
                 <View style={styles.row}>
                   <Text style={{ color: Colors.primary, fontSize: 18 }}>{item.quantity}x</Text>
                   <Text style={{ flex: 1, fontSize: 18 }}>{item.name}</Text>
-                  <Text style={{ fontSize: 18 }}>${item.price * item.quantity}</Text>
+                  <Text style={{ fontSize: 18 }}>€{(item.price * item.quantity).toFixed(2)}</Text>
                 </View>
               </SwipeableRow>
             )}
@@ -86,22 +100,28 @@ const Basket = () => {
                 <View style={{ height: 1, backgroundColor: Colors.grey }}></View>
                 <View style={styles.totalRow}>
                   <Text style={styles.total}>Välimaksu</Text>
-                  <Text style={{ fontSize: 18 }}>€{total}</Text>
+                  <Text style={{ fontSize: 18 }}>€{total.toFixed(2)}</Text>
                 </View>
 
-                <View style={styles.totalRow}>
-                  <Text style={styles.total}>Palveluмaksu</Text>
-                  <Text style={{ fontSize: 18 }}>€{FEES.service}</Text>
-                </View>
+                {products.length > 0 && (
+                  <>
+                    <View style={styles.totalRow}>
+                      <Text style={styles.total}>Palvelumaksu</Text>
+                      <Text style={{ fontSize: 18 }}>€{FEES.service.toFixed(2)}</Text>
+                    </View>
 
-                <View style={styles.totalRow}>
-                  <Text style={styles.total}>Toimitusmaksu</Text>
-                  <Text style={{ fontSize: 18 }}>€{FEES.delivery}</Text>
-                </View>
+                    <View style={styles.totalRow}>
+                      <Text style={styles.total}>Toimitusmaksu</Text>
+                      <Text style={{ fontSize: 18 }}>€{FEES.delivery.toFixed(2)}</Text>
+                    </View>
+                  </>
+                )}
 
                 <View style={styles.totalRow}>
                   <Text style={styles.total}>Tilaus yhteensä</Text>
-                  <Text style={{ fontSize: 18, fontWeight: 'bold' }}>€{(total + FEES.service + FEES.delivery).toFixed(2)}</Text>
+                  <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
+                    €{getFinalTotal().toFixed(2)}
+                  </Text>
                 </View>
               </View>
             }

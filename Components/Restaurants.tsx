@@ -1,8 +1,9 @@
-import { View, Text, ScrollView, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { restaurants } from '../assets/data/home';
 import { Link } from 'expo-router';
 import Colors from '../constants/Colors';
+import Animated, { FadeIn, FadeOut, SlideInLeft, SlideOutRight } from 'react-native-reanimated';
 
 const Restaurants = () => {
   return (
@@ -15,22 +16,36 @@ const Restaurants = () => {
       {restaurants.map((restaurant, index) => (
         <Link href={'/details'} key={index} asChild>
           <TouchableOpacity>
-            <View style={styles.categoryCard}>
-              <Image source={restaurant.img} style={styles.image} />
-              <View style={styles.categoryBox}>
+            <Animated.View 
+              style={styles.categoryCard}
+              entering={FadeIn.delay(index * 100)}
+              exiting={FadeOut}
+            >
+              <Animated.Image 
+                source={restaurant.img} 
+                style={styles.image}
+                entering={SlideInLeft.delay(index * 100)}
+                exiting={SlideOutRight}
+              />
+              <Animated.View 
+                style={styles.categoryBox}
+                entering={FadeIn.delay(index * 100 + 200)}
+                exiting={FadeOut}
+              >
                 <Text style={styles.categoryText}>{restaurant.name}</Text>
                 <Text style={{ color: Colors.green }}>
                   {restaurant.rating} {restaurant.ratings}
                 </Text>
                 <Text style={{ color: Colors.medium }}>{restaurant.distance}</Text>
-              </View>
-            </View>
+              </Animated.View>
+            </Animated.View>
           </TouchableOpacity>
         </Link>
       ))}
     </ScrollView>
   );
 };
+
 const styles = StyleSheet.create({
   categoryCard: {
     width: 300,
@@ -55,6 +70,7 @@ const styles = StyleSheet.create({
     flex: 5,
     width: undefined,
     height: undefined,
+    borderRadius: 4,
   },
   categoryBox: {
     flex: 2,

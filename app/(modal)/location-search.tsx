@@ -56,7 +56,7 @@ const LocationSearch = () => {
       <MapView showsUserLocation={true} style={styles.map} region={location} />
       <View style={styles.absoluteBox}>
         <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-          <Text style={styles.buttonText}>Confirm</Text>
+          <Text style={styles.buttonText}>Vahvista</Text>
         </TouchableOpacity>
       </View>
     </View>

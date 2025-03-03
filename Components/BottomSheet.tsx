@@ -23,35 +23,35 @@ const BottomSheet = forwardRef<Ref>((props, ref) => {
       <View style={styles.contentContainer}>
         <View style={styles.toggle}>
           <TouchableOpacity style={styles.toggleActive}>
-            <Text style={styles.activeText}>Delivery</Text>
+            <Text style={styles.activeText}>Kuljetus</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.toggleInactive}>
-            <Text style={styles.inactiveText}>Pickup</Text>
+            <Text style={styles.inactiveText}>Nouto</Text>
           </TouchableOpacity>
         </View>
 
-        <Text style={styles.subheader}>Your Location</Text>
+        <Text style={styles.subheader}>Sijaintisi</Text>
         <Link href={'/(modal)/location-search'} asChild>
           <TouchableOpacity>
             <View style={styles.item}>
               <Ionicons name="location-outline" size={20} color={Colors.medium} />
-              <Text style={{ flex: 1 }}>Current location</Text>
+              <Text style={{ flex: 1 }}>Nykyinen sijainti</Text>
               <Ionicons name="chevron-forward" size={20} color={Colors.primary} />
             </View>
           </TouchableOpacity>
         </Link>
 
-        <Text style={styles.subheader}>Arrival time</Text>
+        <Text style={styles.subheader}>Saapumisaika</Text>
         <TouchableOpacity>
           <View style={styles.item}>
             <Ionicons name="stopwatch-outline" size={20} color={Colors.medium} />
-            <Text style={{ flex: 1 }}>Now</Text>
+            <Text style={{ flex: 1 }}>Nyt</Text>
             <Ionicons name="chevron-forward" size={20} color={Colors.primary} />
           </View>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button} onPress={() => dismiss()}>
-          <Text style={styles.buttonText}>Confirm</Text>
+          <Text style={styles.buttonText}>Vahvista</Text>
         </TouchableOpacity>
       </View>
     </BottomSheetModal>

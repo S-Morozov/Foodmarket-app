@@ -5,18 +5,39 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';  // Impor
 import Colors from '../constants/Colors';
 import { TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect, useState } from 'react';
+import CustomSplashScreen from '@/Components/CustomSplashScreen';
 
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: 'index',
-};
+SplashScreen.preventAutoHideAsync();
+
 
 export default function RootLayoutNav() {
+  const [isSplashFinished, setIsSplashFinished] = useState(false);
   const navigation = useNavigation();
+
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        await SplashScreen.hideAsync();
+      }
+    }
+
+    prepare();
+  }, []);
+
 
   return (
     // Wrap the whole stack in GestureHandlerRootView
     <GestureHandlerRootView style={{ flex: 1 }}>
+{!isSplashFinished ? (
+  <CustomSplashScreen onAnimationEnd={() => setTimeout(() => setIsSplashFinished(true), 3000)} />
+) : (
+
       <BottomSheetModalProvider>
         <Stack>
           <Stack.Screen
@@ -92,6 +113,7 @@ export default function RootLayoutNav() {
           />
         </Stack>
       </BottomSheetModalProvider>
+      )}
     </GestureHandlerRootView>
   );
 }

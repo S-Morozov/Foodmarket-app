@@ -1,4 +1,4 @@
-export const mainThemed = {
+const mainThemed = {
     colors: {
       primary: '#FFD700',
       background: '#fff',
@@ -6,3 +6,4 @@ export const mainThemed = {
     },
   };
   
+  export default mainThemed; // Об

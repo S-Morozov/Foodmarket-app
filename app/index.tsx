@@ -21,8 +21,10 @@ const Page = () => {
 
 const styles = StyleSheet.create({
   container: {
-    top: 50,
+    top: 70,
     backgroundColor: Colors.main,
+    flex: 1, 
+    paddingBottom: 20, 
   },
   header: {
     fontSize: 18,

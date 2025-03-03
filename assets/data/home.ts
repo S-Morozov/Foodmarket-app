@@ -31,7 +31,7 @@ export const restaurants = [
     rating: '4.5 Erinomainen',
     ratings: '(500+)',
     distance: '0.7 mailia',
-    img: require('../../assets/data/r1.jpeg'),
+    img: require('../../assets/data/r4.jpeg'),
     tags: ['Italialainen', 'Pizza', 'Pasta', 'Salaatit'],
     duration: '35 - 45',
   },

@@ -85,7 +85,7 @@ const Details = () => {
                 {/* Button with shine animation */}
                 <Animated.View style={styles.fullButton}>
                   <Text style={styles.basket}>{items}</Text>
-                  <Text style={styles.footerText}>View Order</Text>
+                  <Text style={styles.footerText}>Katso tilauksesi</Text>
                   <Text style={styles.basketTotal}>€{total}</Text>
 
                   {/* Animated shine effect */}

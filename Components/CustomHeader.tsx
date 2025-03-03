@@ -11,7 +11,7 @@ const SearchBar = () => (
     <View style={styles.searchSection}>
       <View style={styles.searchField}>
         <Ionicons style={styles.searchIcon} name="search" size={20} color={Colors.medium} />
-        <TextInput style={styles.input} placeholder="Restaurants, groceries, dishes" />
+        <TextInput style={styles.input} placeholder="Ravintolat, kaupat, tuotteet" />
       </View>
       <Link href={'/(modal)/filter'} asChild>
         <TouchableOpacity style={styles.optionButton}>
@@ -35,7 +35,7 @@ const CustomHeader = () => {
 
       <View style={styles.container}>
         <TouchableOpacity onPress={openModal}>
-          <Image style={styles.bike} source={require('../assets/images/bike.png')} />
+          <Image style={styles.bike} source={require('../assets/images/splash.png')} />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.titleContainer} onPress={openModal}>
@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   bike: {
-    width: 30,
-    height: 30,
+    width: 50,
+    height: 50,
   },
   titleContainer: {
     flex: 1,

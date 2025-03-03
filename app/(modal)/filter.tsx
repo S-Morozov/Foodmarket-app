@@ -18,29 +18,29 @@ const ItemBox = () => (
     <View style={styles.itemContainer}>
       <TouchableOpacity style={styles.item}>
         <Ionicons name="arrow-down-outline" size={20} color={Colors.medium} />
-        <Text style={{ flex: 1 }}>Sort</Text>
+        <Text style={{ flex: 1 }}>Lajitella</Text>
         <Ionicons name="chevron-forward" size={22} color={Colors.primary} />
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.item}>
         <Ionicons name="fast-food-outline" size={20} color={Colors.medium} />
-        <Text style={{ flex: 1 }}>Hygiene rating</Text>
+        <Text style={{ flex: 1 }}>Hygienialuokitus</Text>
         <Ionicons name="chevron-forward" size={22} color={Colors.primary} />
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.item}>
         <Ionicons name="pricetag-outline" size={20} color={Colors.medium} />
-        <Text style={{ flex: 1 }}>Offers</Text>
+        <Text style={{ flex: 1 }}>Tarjoukset</Text>
         <Ionicons name="chevron-forward" size={22} color={Colors.primary} />
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.item}>
         <Ionicons name="nutrition-outline" size={20} color={Colors.medium} />
-        <Text style={{ flex: 1 }}>Dietary</Text>
+        <Text style={{ flex: 1 }}>Ruokavalio</Text>
         <Ionicons name="chevron-forward" size={22} color={Colors.primary} />
       </TouchableOpacity>
     </View>
-    <Text style={styles.header}>Categories</Text>
+    <Text style={styles.header}>Luokat</Text>
   </>
 );
 
@@ -122,12 +122,12 @@ const Filter = () => {
         <View style={styles.btnContainer}>
           <Animated.View style={[animatedStyles, styles.outlineButton]}>
             <TouchableOpacity onPress={handleClearAll}>
-              <Animated.Text style={[animatedText, styles.outlineButtonText]}>Clear all</Animated.Text>
+              <Animated.Text style={[animatedText, styles.outlineButtonText]}>Tyhjä kaikki</Animated.Text>
             </TouchableOpacity>
           </Animated.View>
 
           <TouchableOpacity style={styles.fullButton} onPress={() => navigation.goBack()}>
-            <Text style={styles.footerText}>Done</Text>
+            <Text style={styles.footerText}>Valmis</Text>
           </TouchableOpacity>
         </View>
       </View>

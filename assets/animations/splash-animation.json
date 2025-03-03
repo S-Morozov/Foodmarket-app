@@ -1,0 +1,157 @@
+[
+    {
+        "version": "1.0",
+        "image": {
+            "name": "Food_1740939812655.png",
+            "baseName": "Food_1740939812655.png",
+            "format": "PNG",
+            "formatDescription": "PNG",
+            "mimeType": "image\/png",
+            "class": "DirectClass",
+            "geometry": {
+                "width": 1242,
+                "height": 2208,
+                "x": 0,
+                "y": 0
+            },
+            "units": "Undefined",
+            "type": "TrueColorAlpha",
+            "baseType": "Undefined",
+            "endianness": "Undefined",
+            "colorspace": "sRGB",
+            "depth": 8,
+            "baseDepth": 8,
+            "channelDepth": {
+                "alpha": 1,
+                "red": 8,
+                "green": 8,
+                "blue": 1
+            },
+            "pixels": 10969344,
+            "imageStatistics": {
+                "Overall": {
+                    "min": 0,
+                    "max": 255,
+                    "mean": 254.175,
+                    "median": 255,
+                    "standardDeviation": 1.0e-12,
+                    "kurtosis": 291.419,
+                    "skewness": -16.8622,
+                    "entropy": 0.0107166
+                }
+            },
+            "channelStatistics": {
+                "alpha": {
+                    "min": 255,
+                    "max": 255,
+                    "mean": 255,
+                    "median": 255,
+                    "standardDeviation": 1.0e-12,
+                    "kurtosis": -2.02081e+57,
+                    "skewness": 3.0835e+40,
+                    "entropy": 0
+                },
+                "red": {
+                    "min": 4,
+                    "max": 255,
+                    "mean": 254.285,
+                    "median": 255,
+                    "standardDeviation": 11.1185,
+                    "kurtosis": 343.267,
+                    "skewness": -18.0969,
+                    "entropy": 0.0140126
+                },
+                "green": {
+                    "min": 6,
+                    "max": 255,
+                    "mean": 253.782,
+                    "median": 255,
+                    "standardDeviation": 15.3296,
+                    "kurtosis": 178.714,
+                    "skewness": -13.2763,
+                    "entropy": 0.0149163
+                },
+                "blue": {
+                    "min": 0,
+                    "max": 255,
+                    "mean": 253.634,
+                    "median": 255,
+                    "standardDeviation": 17.4366,
+                    "kurtosis": 179.684,
+                    "skewness": -13.3474,
+                    "entropy": 0.0139376
+                }
+            },
+            "renderingIntent": "Perceptual",
+            "gamma": 0.454545,
+            "chromaticity": {
+                "redPrimary": {
+                    "x": 0.64,
+                    "y": 0.33
+                },
+                "greenPrimary": {
+                    "x": 0.3,
+                    "y": 0.6
+                },
+                "bluePrimary": {
+                    "x": 0.15,
+                    "y": 0.06
+                },
+                "whitePrimary": {
+                    "x": 0.3127,
+                    "y": 0.329
+                }
+            },
+            "matteColor": "#BDBDBD",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#DFDFDF",
+            "transparentColor": "#00000000",
+            "interlace": "None",
+            "intensity": "Undefined",
+            "compose": "Over",
+            "pageGeometry": {
+                "width": 1242,
+                "height": 2208,
+                "x": 0,
+                "y": 0
+            },
+            "dispose": "Undefined",
+            "iterations": 0,
+            "compression": "Zip",
+            "orientation": "Undefined",
+            "properties": {
+                "date:create": "2025-03-02T18:23:33+00:00",
+                "date:modify": "2025-03-02T18:23:33+00:00",
+                "date:timestamp": "2025-03-02T18:23:38+00:00",
+                "exif:ExifOffset": "26",
+                "exif:PixelXDimension": "1242",
+                "exif:PixelYDimension": "2208",
+                "icc:copyright": "Copyright Apple Inc., 2022",
+                "icc:description": "Display P3",
+                "png:acTL": "chunk was found",
+                "png:iCCP": "chunk was found",
+                "png:IHDR.bit-depth-orig": "8",
+                "png:IHDR.bit_depth": "8",
+                "png:IHDR.color-type-orig": "6",
+                "png:IHDR.color_type": "6 (RGBA)",
+                "png:IHDR.interlace_method": "0 (Not interlaced)",
+                "png:IHDR.width,height": "1242, 2208",
+                "signature": "5fa30f29af8aea70bf506ae4df98cb36d891e4279fad8b76880cf3199a42b04f"
+            },
+            "profiles": {
+                "exif": {
+                    "length": 62
+                },
+                "icc": {
+                    "length": 536
+                }
+            },
+            "tainted": false,
+            "filesize": "1.17734MB",
+            "numberPixels": "2.74234M",
+            "pixelsPerSecond": "1.2652GB",
+            "userTime": "0.000u",
+            "elapsedTime": "0:01.002"
+        }
+    }
+]
