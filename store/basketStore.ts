@@ -49,7 +49,6 @@ const useBasketStore = create<BasketState>((set) => ({
 
   reduceProduct: (product) => {
     set((state) => {
-      // Уменьшаем количество товара
       const updatedProducts = state.products
         .map((p) => {
           if (p.id === product.id) {
@@ -57,13 +56,11 @@ const useBasketStore = create<BasketState>((set) => ({
           }
           return p;
         })
-        .filter((p) => p.quantity > 0); // Убираем товары с количеством 0
+        .filter((p) => p.quantity > 0); 
 
-      // Пересчитываем общее количество товаров и итоговую стоимость
       const updatedItems = updatedProducts.reduce((acc, curr) => acc + curr.quantity, 0);
       const updatedTotal = updatedProducts.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
 
-      // Если корзина пуста, сбрасываем сервисные сборы и доставку на 0
       const newServiceFee = updatedItems > 0 ? state.serviceFee : 0;
       const newDeliveryFee = updatedItems > 0 ? state.deliveryFee : 0;
 

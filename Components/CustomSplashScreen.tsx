@@ -14,7 +14,6 @@ import Animated, {
 } from 'react-native-reanimated';
 import * as SplashScreen from 'expo-splash-screen';
 
-// Определяем тип для пропсов
 interface CustomSplashScreenProps {
   onAnimationEnd: () => void;
 }
@@ -28,21 +27,19 @@ const CustomSplashScreen: React.FC<CustomSplashScreenProps> = ({ onAnimationEnd 
   useEffect(() => {
     async function prepare() {
       try {
-        // Пульсация (увеличение-уменьшение)
         scale.value = withRepeat(
           withSequence(
-            withTiming(1.1, { duration: 1500 }), // Увеличение
-            withTiming(1, { duration: 1500 }) // Возвращение в норму
+            withTiming(1.1, { duration: 1500 }), 
+            withTiming(1, { duration: 1500 }) 
           ),
-          -1, // Бесконечно повторяется
+          -1, 
           true
         );
 
-        // Легкое покачивание (вращение)
         rotate.value = withRepeat(
           withSequence(
-            withTiming(5, { duration: 1500 }), // Поворот на 5 градусов
-            withTiming(-5, { duration: 1500 }) // Поворот обратно
+            withTiming(5, { duration: 1500 }),
+            withTiming(-5, { duration: 1500 })
           ),
           -1,
           true
