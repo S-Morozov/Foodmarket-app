@@ -17,18 +17,6 @@ const ItemBox = () => (
   <>
     <View style={styles.itemContainer}>
       <TouchableOpacity style={styles.item}>
-        <Ionicons name="arrow-down-outline" size={20} color={Colors.medium} />
-        <Text style={{ flex: 1 }}>Lajitella</Text>
-        <Ionicons name="chevron-forward" size={22} color={Colors.primary} />
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.item}>
-        <Ionicons name="fast-food-outline" size={20} color={Colors.medium} />
-        <Text style={{ flex: 1 }}>Hygienialuokitus</Text>
-        <Ionicons name="chevron-forward" size={22} color={Colors.primary} />
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.item}>
         <Ionicons name="pricetag-outline" size={20} color={Colors.medium} />
         <Text style={{ flex: 1 }}>Tarjoukset</Text>
         <Ionicons name="chevron-forward" size={22} color={Colors.primary} />
@@ -95,7 +83,7 @@ const Filter = () => {
         fillColor={Colors.primary}
         unfillColor="#fff"
         disableBuiltInState
-        iconStyle={{ borderColor: Colors.primary, borderRadius: 4, borderWidth: 2 }}
+        iconStyle={{ borderColor: Colors.main, borderRadius: 4, borderWidth: 2 }}
         innerIconStyle={{ borderColor: Colors.primary, borderRadius: 4 }}
         onPress={() => {
           const isChecked = items[index].checked;
@@ -159,7 +147,7 @@ const styles = StyleSheet.create({
     },
   },
   fullButton: {
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.main,
     padding: 16,
     alignItems: 'center',
     borderRadius: 8,
