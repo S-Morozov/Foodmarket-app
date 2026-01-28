@@ -1,43 +1,43 @@
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
-import React, { useRef } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
 import { useLocalSearchParams, useRouter, Link } from 'expo-router';
 import { getDishById } from '../details';
 import Colors from '../../constants/Colors';
 import Animated, {
-  FadeIn,
   FadeInLeft,
   FadeInUp,
   ZoomIn,
+  FadeIn,
+  FadeOut,
   useSharedValue,
   useAnimatedStyle,
   withSequence,
   withSpring,
-  withTiming,
-  runOnJS,
 } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 import useBasketStore from '../../store/basketStore';
 import { Ionicons } from '@expo/vector-icons';
-import { useCartAnimation } from '../../context/CartAnimationContext';
-
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 const Dish = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const { addProduct, reduceProduct, products } = useBasketStore();
-  const { triggerFlyToCart } = useCartAnimation();
   const item = getDishById(Number(id));
-  const imageRef = useRef<View>(null);
+  const [showAdded, setShowAdded] = useState(false);
 
   const cartItem = products.find((p) => p.id === Number(id));
   const quantity = cartItem?.quantity || 0;
 
   // Button animation
   const buttonScale = useSharedValue(1);
+  const imageScale = useSharedValue(1);
 
   const animatedButtonStyle = useAnimatedStyle(() => ({
     transform: [{ scale: buttonScale.value }],
+  }));
+
+  const animatedImageStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: imageScale.value }],
   }));
 
   const addToCart = () => {
@@ -49,8 +49,15 @@ const Dish = () => {
       withSpring(1, { damping: 8 })
     );
 
-    // Trigger fly animation
-    triggerFlyToCart(item.img, SCREEN_WIDTH / 2 - 30, 150);
+    // Trigger image pulse
+    imageScale.value = withSequence(
+      withSpring(1.05, { damping: 8 }),
+      withSpring(1, { damping: 10 })
+    );
+
+    // Show "Added" indicator
+    setShowAdded(true);
+    setTimeout(() => setShowAdded(false), 1200);
 
     addProduct({
       id: item.id,
@@ -84,11 +91,26 @@ const Dish = () => {
 
   return (
     <View style={styles.container}>
-      <Animated.Image
-        entering={ZoomIn.duration(400).springify().damping(15)}
-        source={item.img}
-        style={styles.image}
-      />
+      <View style={styles.imageContainer}>
+        <Animated.View entering={ZoomIn.duration(400).springify().damping(15)}>
+          <Animated.View style={animatedImageStyle}>
+            <Animated.Image
+              source={item.img}
+              style={styles.image}
+            />
+          </Animated.View>
+        </Animated.View>
+        {showAdded && (
+          <Animated.View
+            entering={FadeIn.duration(200)}
+            exiting={FadeOut.duration(200)}
+            style={styles.addedBadge}
+          >
+            <Ionicons name="checkmark-circle" size={24} color="#fff" />
+            <Text style={styles.addedText}>Lisätty!</Text>
+          </Animated.View>
+        )}
+      </View>
       <View style={styles.content}>
         <Animated.Text entering={FadeInLeft.duration(400).delay(200)} style={styles.dishName}>
           {item.name}
@@ -154,9 +176,35 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: Colors.medium,
   },
+  imageContainer: {
+    position: 'relative',
+  },
   image: {
     width: '100%',
     height: 300,
+  },
+  addedBadge: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: [{ translateX: -50 }, { translateY: -25 }],
+    backgroundColor: Colors.green,
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 25,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 10,
+  },
+  addedText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
   content: {
     flex: 1,
